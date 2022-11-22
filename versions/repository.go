@@ -9,17 +9,15 @@ type VersionRepository interface {
 	FindAll() ([]Version, error)
 }
 
-func NewRepository(db *sql.DB) *PGVersionRepository {
-	return &PGVersionRepository{
-		DB: db,
-	}
-}
-
-type PGVersionRepository struct {
+type VersionRepo struct {
 	DB *sql.DB
 }
 
-func (pg *PGVersionRepository) FindAll() ([]Version, error) {
+func NewVersionRepo(db *sql.DB) *VersionRepo {
+	return &VersionRepo{DB: db}
+}
+
+func (v *VersionRepo) FindAll() ([]Version, error) {
 
 	result := []Version{}
 

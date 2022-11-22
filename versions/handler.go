@@ -10,7 +10,7 @@ type VersionHandler struct {
 	Repo VersionRepository
 }
 
-func NewHandler(repo *PGVersionRepository) *VersionHandler {
+func NewHandler(repo VersionRepository) *VersionHandler {
 	return &VersionHandler{
 		Repo: repo,
 	}

@@ -4,10 +4,11 @@ import (
 	"net/http"
 	"os"
 
+	log "github.com/sirupsen/logrus"
+
 	sql "github.com/Yirgacheffe/ocpi/db"
 	"github.com/Yirgacheffe/ocpi/versions"
 	"github.com/gorilla/mux"
-	"github.com/sirupsen/logrus"
 
 	"github.com/Yirgacheffe/ocpi/middleware"
 )
@@ -33,11 +34,10 @@ func StartServer() error {
 		return err
 	}
 
-	log := logrus.New()
 	addr := getEnv("ADDR", "localhost:9090")
 
 	// version endpoint
-	vRepo := versions.NewRepository(db.DB)
+	vRepo := versions.NewVersionRepo(db.DB)
 	v := versions.NewHandler(vRepo)
 
 	router := mux.NewRouter()
