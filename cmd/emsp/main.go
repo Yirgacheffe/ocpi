@@ -21,6 +21,6 @@ func init() {
 func main() {
 	err := StartServer()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err) // ---------------
 	}
 }
